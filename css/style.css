@@ -40,3 +40,19 @@ content: none; }
 table {
 border-collapse: collapse;
 border-spacing: 0; }
+
+.addbook__radio{
+  display: inline-block;
+}
+
+.addbook__name{
+  display: block;
+}
+
+.addbook__loadbutton{
+  display: block;
+}
+
+.addbook__booktext{
+  display: block;
+}

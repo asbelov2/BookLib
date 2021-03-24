@@ -14,13 +14,17 @@
   </style>
 </head>
 <body>
-  <script type="text/javascript" src="index.js"></script>
-  <form class="myform">
-    <input type="radio" name="acttype"> Написать самому
-    <input type="radio" name="acttype"> Загрузить из файла
-    Название
-    <input>
-    <button>Загрузить...</button>
-    <input type="text" placeholder="Текст...">
+  <script type="text/javascript" src="js/index.js"></script>
+  <form id="addbookform" class="addbookform" enctype="multipart/form-data" method="POST">
+    <input class="addbook__radio" type="radio" name="loadtype"> 
+    Написать самому
+    <br>
+    <input class="addbook__radio" type="radio" name="loadtype" checked> 
+    Загрузить из файла
+    <br>Название
+    <input id="addbook__name" class="addbook__name">
+    <input id="addbook__file" class="addbook__file" value="Загрузить..." type="file" accept=".txt">
+    <input id="addbook__booktext" class="addbook__booktext" type="text" placeholder="Текст...">
+    <input id="addbook__submit" class="addbook__submit" type="submit" value="Отправить">
   </form>
 </body>
