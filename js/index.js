@@ -19,17 +19,19 @@ window.onload = async () => {
       document.getElementById("addbook__booktext").style.display = "none";
     }
   };
-  addbook__submit.onclick = async function(e) {
+  /*addbook__submit.onclick = async function(e) {
     let url="https://apiinterns.osora.ru/";
-    let file = document.getElementById("addbook__file").nodeValue; // our file with book
-    console.log(123);
-    let blob = await new Promise(resolve => file.toBlob(resolve));
-    console.log(123);
+    let text = document.getElementById("addbook__file").value; // our file with book
+    let name = document.getElementById("addbook__name").value;
+    let data = {
+      login: name,
+      file: text
+    }
+    console.log(data);
     let response = await fetch(url, {
       method: 'POST',
-      body: blob
+      body: data
     });
     console.log(file,response,response.json());
-
-  }
+  }*/
 };
