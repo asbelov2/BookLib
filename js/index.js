@@ -20,8 +20,9 @@ window.onload = async () => {
     }
 
     addbook__submit.onclick = async function(e) {
-      let url="https://apiinterns.osora.ru";
-      let text = document.getElementById("addbook__file").files[0]; // our file with book
+      e.preventDefault();
+      let url="https://apiinterns.osora.ru/";
+      let text = document.getElementById("addbook__file").files[0];
       let name = document.getElementById("addbook__name").value;
       let data = {
         login: name,
