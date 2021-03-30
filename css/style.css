@@ -26,6 +26,7 @@ display: block; }
 body {
 display: flex;
 flex-direction: row;
+background-color:snow;
 line-height: 1; }
 
 ol, ul {
@@ -42,6 +43,16 @@ content: none; }
 table {
 border-collapse: collapse;
 border-spacing: 0; }
+
+.addbookform{
+  display: none;
+  flex-direction: column;
+  margin: 10px;
+  border:black 1px solid;
+  border-radius: 20px;
+  padding: 5px;
+  background-color: lightsalmon;
+}
 
 .addbook__radio{
   display: inline-block;
@@ -63,16 +74,37 @@ border-spacing: 0; }
   display: block;
 }
 
-.booklist{
+.menu-booklist__wrap{
   display: flex;
   flex-direction: column;
-  margin: 5px;
+  background-color: lightskyblue;
+  margin: 3px;
+  min-height: 48px;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
 .book{
   display: flex;
   flex-direction: row;
+  margin: 5px;
   justify-content: space-between;
+  border: gray 1px solid;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.book:hover{
+  cursor: grab;
+  background-color: lightgray;
+}
+
+.book_completed{
+  background-color: lightgreen;
+}
+
+.book_uncompleted{
+  background-color: gray;
 }
 
 .book-buttons{
@@ -82,7 +114,9 @@ border-spacing: 0; }
 
 .book__title{
   display: flex;
-  margin: 0px 10px 0px 0px;
+  margin: 4px;
+  border-radius: 4px;
+  border:black 1px solid
 }
 
 .book-buttons__button{
@@ -96,8 +130,69 @@ border-spacing: 0; }
   cursor: pointer;
 }
 
+.bookview{
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+}
+
+.bookview__bookname{
+  display: flex;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .bookview__textarea{
   display: flex;
   border-radius: 20px;
   background-color: azure
+}
+
+.menu{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 5px;
+  border: black 1px solid;
+  border-radius: 20px;
+  background-color: honeydew;
+}
+
+.menu-item{
+  display: flex;
+  border-top: black 1px solid;
+  border-bottom: black 1px solid;
+  background-color: lightskyblue;
+  margin: 10px;
+}
+
+.menu__item_addbook{
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  margin: 5px;
+  justify-content: space-between;
+  border: gray 1px solid;
+  border-radius: 5px;
+  background-color: white;
+  line-height: 24px;
+}
+
+.menu__item_addbook:hover{
+  cursor: grab;
+  background-color: lightgray;
+}
+
+.menu__item_addbook:hover{
+  cursor: pointer;
+}
+
+.menu-favoritebooks{
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
+  min-height: 48px;
+  border-radius: 5px;
+  background-color: lightpink;
 }

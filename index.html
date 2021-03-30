@@ -30,12 +30,15 @@
   <script type="text/javascript" src="js/index.js"></script>
   <ul class="menu">
     <li class="menu__item menu__item_addbook" id="menu__item_addbook">Add book</li>
-    <ul class="menu__item menu-favoritebooks">
-
+    <li>Favorite ★</li>
+    <ul class="menu__item menu-favoritebooks" ondragenter="return dragEnter(event)" ondrop="return dragDropToFav(event)" ondragover="return dragOver(event)">
+      
     </ul>
-    <ul class="menu__item menu-booklist">
+    <div class="menu-booklist__wrap" ondragenter="return dragEnter(event)" ondrop="return dragDropToList(event)" ondragover="return dragOver(event)">
+      <ul class="menu__item menu-booklist">
 
-    </ul>
+      </ul>
+    </div>
   </ul>
   <form id="addbookform" class="addbookform" name="addbookform" enctype="multipart/form-data" method="POST">
     <input class="addbook__radio" type="radio" name="loadtype">
