@@ -28,6 +28,15 @@
 
 <body>
   <script type="text/javascript" src="js/index.js"></script>
+  <ul class="menu">
+    <li class="menu__item menu__item_addbook" id="menu__item_addbook">Add book</li>
+    <ul class="menu__item menu-favoritebooks">
+
+    </ul>
+    <ul class="menu__item menu-booklist">
+
+    </ul>
+  </ul>
   <form id="addbookform" class="addbookform" name="addbookform" enctype="multipart/form-data" method="POST">
     <input class="addbook__radio" type="radio" name="loadtype">
     Написать самому
@@ -41,10 +50,8 @@
     <textarea id="addbook__booktext" class="addbook__booktext" rows="4" placeholder="Текст..."></textarea>
     <input id="addbook__submit" class="addbook__submit" type="submit" value="Отправить">
   </form>
-  <div class="booklist">
-
-  </div>
   <div class="bookview">
+    <div class="bookview__bookname"></div>
     <textarea id="bookview__textarea" class="bookview__textarea" rows="30" cols="100">
 
       </textarea>
@@ -52,15 +59,15 @@
 
 </body>
 <template id="book">
-  <div class="book">
-    <span class="book__title"></span>
+  <li class="book">
+    <span class="book__title book_uncompleted"></span>
     <div class="book-buttons">
       <input type="button" class="book-buttons__button book-buttons__button_read" value="read">
       <input type="button" class="book-buttons__button book-buttons__button_delete" value="delete">
       <input type="button" class="book-buttons__button book-buttons__button_complete" value="complete">
       <input type="button" class="book-buttons__button book-buttons__button_edit" value="edit">
     </div>
-  </div>
+  </li>
 </template>
 
 </html>
