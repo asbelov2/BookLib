@@ -56,3 +56,7 @@ border-spacing: 0; }
 .addbook__booktext{
   display: block;
 }
+
+.addbook__namelabel{
+  display: block;
+}
