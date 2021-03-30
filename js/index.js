@@ -84,54 +84,75 @@ window.onload = async () => {
   };
 };
 
-function renderBooks(){
+function renderBooks() {
   document.getElementsByClassName("booklist")[0].innerHTML = "";
   for (let i = 0; i < books.length; ++i) {
     let bookItem = document.createElement("div");
-    bookItem.id = "id"+i;
+    bookItem.id = "id" + i;
     document.querySelector("#book").content.querySelector("span").innerText =
       books[i].name;
-    
+
     bookItem.innerHTML = document.getElementById("book").innerHTML;
     document.getElementsByClassName("booklist")[0].appendChild(bookItem);
 
     document
-    .querySelector(".booklist #id"+i)
-    .querySelector(
-      ".book-buttons__button.book-buttons__button_read"
-    ).onclick = async function (e) {
-      console.log('book_read');
+      .querySelector(".booklist #id" + i)
+      .querySelector(
+        ".book-buttons__button.book-buttons__button_read"
+      ).onclick = async function (e) {
+      console.log("book_read");
 
-    document.getElementsByClassName("bookview__textarea")[0].value =
-      books[i].text;
-    document.getElementsByClassName("bookview__textarea")[0].readOnly = true;
-  };
-  document
-    .querySelector(".booklist #id"+i)
-    .querySelector(
-      ".book-buttons__button.book-buttons__button_delete"
-    ).onclick = async function (e) {
-      console.log('book_delete');
-    books.splice(i, 1);
-    localStorage.setItem("books", JSON.stringify(books));
-    renderBooks();
-  };
-  document
-    .querySelector(".booklist #id"+i)
-    .querySelector(
-      ".book-buttons__button.book-buttons__button_complete"
-    ).onclick = async function (e) {
-      console.log('book_complete');
+      document.getElementsByClassName("bookview__textarea")[0].value =
+        books[i].text;
+      document.getElementsByClassName("bookview__textarea")[0].readOnly = true;
+    };
+    document
+      .querySelector(".booklist #id" + i)
+      .querySelector(
+        ".book-buttons__button.book-buttons__button_delete"
+      ).onclick = async function (e) {
+      console.log("book_delete");
+      books.splice(i, 1);
+      localStorage.setItem("books", JSON.stringify(books));
+      renderBooks();
+    };
+    document
+      .querySelector(".booklist #id" + i)
+      .querySelector(
+        ".book-buttons__button.book-buttons__button_complete"
+      ).onclick = async function (e) {
+      console.log("book_complete");
     };
 
-  document
-    .querySelector(".booklist #id"+i)
-    .querySelector(
-      ".book-buttons__button.book-buttons__button_edit"
-    ).onclick = async function (e) {
-      console.log('book_edit');
-    document.getElementsByClassName("bookview__textarea")[0].readOnly = false;
-    //...
-  };
+    document
+      .querySelector(".booklist #id" + i)
+      .querySelector(
+        ".book-buttons__button.book-buttons__button_edit"
+      ).onclick = async function (e) {
+      console.log("book_edit");
+      document.getElementsByClassName("bookview__textarea")[0].readOnly = false;
+
+      let save = document.createElement("input");
+      save.type = "button";
+      save.value = "Save";
+      let cancel = document.createElement("input");
+      cancel.type = "button";
+      cancel.value = "Cancel";
+      save.onclick = async function (e) {
+        books[i].text = document.getElementsByClassName(
+          "bookview__textarea"
+        )[0].value;
+        localStorage.setItem("books", JSON.stringify(books));
+        renderBooks();
+        cancel.remove();
+        save.remove();
+      };
+      cancel.onclick = async function (e) {
+        cancel.remove();
+        save.remove();
+      };
+      document.getElementsByClassName("bookview")[0].appendChild(save);
+      document.getElementsByClassName("bookview")[0].appendChild(cancel);
+    };
   }
 }
