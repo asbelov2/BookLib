@@ -24,6 +24,8 @@ footer, header, hgroup, menu, nav, section {
 display: block; }
 
 body {
+display: flex;
+flex-direction: row;
 line-height: 1; }
 
 ol, ul {
@@ -59,4 +61,43 @@ border-spacing: 0; }
 
 .addbook__namelabel{
   display: block;
+}
+
+.booklist{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.book{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.book-buttons{
+  display: flex;
+  flex-direction: row;
+}
+
+.book__title{
+  display: flex;
+  margin: 0px 10px 0px 0px;
+}
+
+.book-buttons__button{
+  display: flex;
+  background: none;
+  border: 0;
+  margin: 5px;
+}
+
+.book-buttons__button:hover{
+  cursor: pointer;
+}
+
+.bookview__textarea{
+  display: flex;
+  border-radius: 20px;
+  background-color: azure
 }

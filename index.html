@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Library</title>
   <link rel="stylesheet" href="css/style.css">
   <!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   <style>
-    article, aside, details, figcaption, figure, footer,header,
-    hgroup, menu, nav, section { display: block; }
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
   </style>
 </head>
+
 <body>
   <script type="text/javascript" src="js/index.js"></script>
   <form id="addbookform" class="addbookform" name="addbookform" enctype="multipart/form-data" method="POST">
-    <input class="addbook__radio" type="radio" name="loadtype"> 
+    <input class="addbook__radio" type="radio" name="loadtype">
     Написать самому
     <br>
-    <input class="addbook__radio" type="radio" name="loadtype" checked> 
+    <input class="addbook__radio" type="radio" name="loadtype" checked>
     Загрузить из файла
     <br>
     <span id="addbook__namelabel" class="addbook__namelabel">Название</span>
@@ -28,4 +41,26 @@
     <textarea id="addbook__booktext" class="addbook__booktext" rows="4" placeholder="Текст..."></textarea>
     <input id="addbook__submit" class="addbook__submit" type="submit" value="Отправить">
   </form>
+  <div class="booklist">
+
+  </div>
+  <div class="bookview">
+    <textarea id="bookview__textarea" class="bookview__textarea" rows="30" cols="100">
+
+      </textarea>
+  </div>
+
 </body>
+<template id="book">
+  <div class="book">
+    <span class="book__title"></span>
+    <div class="book-buttons">
+      <input type="button" class="book-buttons__button book-buttons__button_read" value="read">
+      <input type="button" class="book-buttons__button book-buttons__button_delete" value="delete">
+      <input type="button" class="book-buttons__button book-buttons__button_complete" value="complete">
+      <input type="button" class="book-buttons__button book-buttons__button_edit" value="edit">
+    </div>
+  </div>
+</template>
+
+</html>

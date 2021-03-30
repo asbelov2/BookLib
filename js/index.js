@@ -7,6 +7,8 @@ window.onload = async () => {
     books = JSON.parse(localStorage.getItem("books"));
   }
 
+  renderBooks();
+
   console.log(books);
   var rad = document.getElementsByName("loadtype");
   if (rad[0].checked) {
@@ -56,16 +58,17 @@ window.onload = async () => {
             type: "text/plain",
           }
         );
-        books.push({'name':file.name, 'text':(await file.text())});
+        books.push({ name: file.name, text: await file.text() });
         localStorage.setItem("books", JSON.stringify(books));
         bookForm.append("file", file);
       }
       if (rad[1].checked) {
         let file = document.getElementById("addbook__file").files[0];
-        books.push({'name':file.name, 'text':(await file.text())});
+        books.push({ name: file.name, text: await file.text() });
         localStorage.setItem("books", JSON.stringify(books));
         bookForm.append("file", file);
       }
+
       let response = await fetch(url, {
         method: "POST",
         body: bookForm,
@@ -76,7 +79,59 @@ window.onload = async () => {
           console.log("Error: " + e.message);
           console.log(e.response);
         });
-      console.log(books);
+      renderBooks();
     };
   };
 };
+
+function renderBooks(){
+  document.getElementsByClassName("booklist")[0].innerHTML = "";
+  for (let i = 0; i < books.length; ++i) {
+    let bookItem = document.createElement("div");
+    bookItem.id = "id"+i;
+    document.querySelector("#book").content.querySelector("span").innerText =
+      books[i].name;
+    
+    bookItem.innerHTML = document.getElementById("book").innerHTML;
+    document.getElementsByClassName("booklist")[0].appendChild(bookItem);
+
+    document
+    .querySelector(".booklist #id"+i)
+    .querySelector(
+      ".book-buttons__button.book-buttons__button_read"
+    ).onclick = async function (e) {
+      console.log('book_read');
+
+    document.getElementsByClassName("bookview__textarea")[0].value =
+      books[i].text;
+    document.getElementsByClassName("bookview__textarea")[0].readOnly = true;
+  };
+  document
+    .querySelector(".booklist #id"+i)
+    .querySelector(
+      ".book-buttons__button.book-buttons__button_delete"
+    ).onclick = async function (e) {
+      console.log('book_delete');
+    books.splice(i, 1);
+    localStorage.setItem("books", JSON.stringify(books));
+    renderBooks();
+  };
+  document
+    .querySelector(".booklist #id"+i)
+    .querySelector(
+      ".book-buttons__button.book-buttons__button_complete"
+    ).onclick = async function (e) {
+      console.log('book_complete');
+    };
+
+  document
+    .querySelector(".booklist #id"+i)
+    .querySelector(
+      ".book-buttons__button.book-buttons__button_edit"
+    ).onclick = async function (e) {
+      console.log('book_edit');
+    document.getElementsByClassName("bookview__textarea")[0].readOnly = false;
+    //...
+  };
+  }
+}
