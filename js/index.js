@@ -184,6 +184,7 @@ function renderBooks() {
         books[i].text;
       document.getElementsByClassName("bookview__textarea")[0].readOnly = false;
 
+      document.getElementsByClassName("bookview-buttons")[0].innerHTML = "";
       let save = document.createElement("input");
       save.type = "button";
       save.value = "Save";
@@ -195,16 +196,26 @@ function renderBooks() {
           "bookview__textarea"
         )[0].value;
         localStorage.setItem("books", JSON.stringify(books));
+        document.getElementsByClassName("bookview__bookname")[0].innerText =
+        books[i].name;
+      document.getElementsByClassName("bookview__textarea")[0].value =
+        books[i].text;
+      document.getElementsByClassName("bookview__textarea")[0].readOnly = true;
         renderBooks();
         cancel.remove();
         save.remove();
       };
       cancel.onclick = async function (e) {
+        document.getElementsByClassName("bookview__bookname")[0].innerText =
+        books[i].name;
+      document.getElementsByClassName("bookview__textarea")[0].value =
+        books[i].text;
+      document.getElementsByClassName("bookview__textarea")[0].readOnly = true;
         cancel.remove();
         save.remove();
       };
-      document.getElementsByClassName("bookview")[0].appendChild(save);
-      document.getElementsByClassName("bookview")[0].appendChild(cancel);
+      document.getElementsByClassName("bookview-buttons")[0].appendChild(save);
+      document.getElementsByClassName("bookview-buttons")[0].appendChild(cancel);
     };
   }
 }

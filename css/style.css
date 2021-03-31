@@ -149,6 +149,11 @@ border-spacing: 0; }
   background-color: azure
 }
 
+.bookview-buttons{
+  display: flex;
+  flex-direction: row;
+}
+
 .menu{
   display: flex;
   flex-direction: column;
